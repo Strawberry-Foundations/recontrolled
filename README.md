@@ -1,5 +1,4 @@
-# recontrolled
-**By Strawberry Foundations**
+# **recontrolled - By Strawberry Foundations**
 
 ## What is recontrolled?
 recontrolled is a rewrite of the old version of recontrolled, called [ledcontrol](https://github.com/Strawberry-Software-Industries/ledcontrol). 
