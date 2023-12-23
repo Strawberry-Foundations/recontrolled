@@ -21,7 +21,7 @@ mod led {
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    if env::consts::OS != "linux" {
+    if !cfg!(target_os = "linux") {
         eprintln!("{}Platform '{}' is not supported, only Linux is supported.", RED, env::consts::OS);
         std::process::exit(1)
     }
