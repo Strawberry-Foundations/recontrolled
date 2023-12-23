@@ -21,7 +21,9 @@ mod led {
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    if !cfg!(target_os = "linux") { panic!("{BOLD}{RED}Platform '{}' is not supported! Only Linux is supported!{C_RESET}", std::env::consts::OS) }
+    if !cfg!(target_os = "linux") { 
+        panic!("{BOLD}{RED}Platform '{}' is not supported! Only Linux is supported!{C_RESET}", std::env::consts::OS); 
+    }
 
     if args.len() < 2 {
         basics::help::print_help();
