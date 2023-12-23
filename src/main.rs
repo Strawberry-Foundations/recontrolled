@@ -1,8 +1,12 @@
 use std::env;
 
-mod colors;
+mod vars {
+    pub mod colors;
+    pub mod constants;
+}
 mod basics {
     pub mod help;
+    pub mod about;
 }
 
 fn main() {
@@ -15,6 +19,7 @@ fn main() {
 
     match args[1].as_str() {
         "help" => basics::help::print_help(),
+        "about" => basics::about::print_about(),
         _ => basics::help::print_help()
     }
 }
