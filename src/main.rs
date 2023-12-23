@@ -88,6 +88,32 @@ fn main() {
         "lb" => led::blink_sync::blink_sync(1000),
         "lbs" => led::blink_switch::blink_switch(1000),
 
+        // SYNC MODE (CUSTOM)
+        "lbc" => {
+            if args.len() < 3 {
+                eprintln!("{RED}{BOLD}Invalid argument for blink delay{C_RESET}");
+                basics::help::print_help();
+                std::process::exit(0)
+            }
+
+            led::blink_sync::blink_sync((&args[2]).parse::<u64>().unwrap_or_else(|_| {
+                eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
+                std::process::exit(1)
+            }))
+        },
+        "lbsc" => {
+            if args.len() < 3 {
+                eprintln!("{RED}{BOLD}Invalid argument for blink delay{C_RESET}");
+                basics::help::print_help();
+                std::process::exit(0)
+            }
+
+            led::blink_switch::blink_switch((&args[2]).parse::<u64>().unwrap_or_else(|_| {
+                eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
+                std::process::exit(1)
+            }))
+        },
+
         _ => basics::help::print_help()
     }
 }
