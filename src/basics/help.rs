@@ -1,9 +1,10 @@
 use crate::vars::colors::*;
+use crate::vars::constants::RECONTROLLED_STR;
 
 pub fn print_help() {
 
     println!(
-        "               {}{}* -------- {}R{}e{}c{}o{}n{}t{}r{}o{}l{}l{}e{}d{}{}{} -------- *\n
+        "               {}{}* -------- {RECONTROLLED_STR} -------- *\n
              {BOLD}{PURPLE}Usage:{WHITE} recontrolled {CYAN}[command] {RED}[<options>]{C_RESET}\n
 
             {BOLD}{BLUE}Basics                      {RED}Power-LED (pwr){C_RESET}
@@ -26,8 +27,6 @@ pub fn print_help() {
 {BOLD}{WHITE}| {LIGHT_GREEN}                           {WHITE} | {PURPLE}bgff: Blinks Act-LED super fast {WHITE} |
 {BOLD}{WHITE}* {DUMMY             }--------------------------- + -------------------------------- *
         ",
-        BOLD, WHITE,
-            LIGHT_CYAN, GREEN, YELLOW, BLUE, PURPLE, CYAN, LIGHT_BLUE, RED, LIGHT_GREEN, LIGHT_MAGENTA, LIGHT_GREEN, YELLOW,
-        C_RESET, BOLD, WHITE
+        BOLD, WHITE
     )
 }
