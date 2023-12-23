@@ -1,4 +1,4 @@
-use crate::colors::*;
+use crate::vars::colors::*;
 
 pub fn print_help() {
 
