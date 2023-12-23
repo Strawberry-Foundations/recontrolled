@@ -1,6 +1,7 @@
 use std::env;
 
 mod help;
+mod colors;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
