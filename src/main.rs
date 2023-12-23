@@ -1,5 +1,5 @@
 use std::env;
-use crate::vars::colors::RED;
+use crate::vars::colors::{BOLD, RED, C_RESET};
 
 use crate::vars::modules::{LED, Status};
 
@@ -21,10 +21,7 @@ mod led {
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    if !cfg!(target_os = "linux") {
-        eprintln!("{}Platform '{}' is not supported, only Linux is supported.", RED, env::consts::OS);
-        std::process::exit(1)
-    }
+    if !cfg!(target_os = "linux") { panic!("{BOLD}{RED}Platform '{}' is not supported! Only Linux is supported!{C_RESET}", std::env::consts::OS) }
 
     if args.len() < 2 {
         basics::help::print_help();
