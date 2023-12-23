@@ -27,7 +27,7 @@ pub fn print_about() {
 |         Open Source License         |
 |                                     |
 | https://opensource.org/license/mit/ |
-* ----------------------------------- *
+* ----------------------------------- *{C_RESET}
         "
     )
 }
