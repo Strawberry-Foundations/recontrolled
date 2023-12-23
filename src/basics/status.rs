@@ -22,21 +22,30 @@ pub fn print_status() {
 }
 
 fn check_status(led: LED) -> String {
-    let mut pwr_file = match led {
-        LED::PWR => File::open(FILE_PWR_LED).expect(format!("{}Error while opening {}{}", RED, FILE_PWR_LED, C_RESET).as_str()),
-        LED::ACT => File::open(FILE_ACT_LED).expect(format!("{}Error while opening {}{}", RED, FILE_PWR_LED, C_RESET).as_str())
+    let mut led_file_path;
+
+    let mut led_file = match led {
+        LED::PWR => {
+            File::open(FILE_PWR_LED).expect(format!("{}Error while opening {}{}", RED, FILE_PWR_LED, C_RESET).as_str());
+            led_file_path = FILE_PWR_LED;
+        },
+        LED::ACT => {
+            File::open(FILE_ACT_LED).expect(format!("{}Error while opening {}{}", RED, FILE_ACT_LED, C_RESET).as_str());
+            led_file_path = FILE_ACT_LED;
+        }
     };
-    let mut pwr_status = String::new();
+
+    let mut led_status = String::new();
 
     let fmt_off = format!("{}{}off{}", BOLD, RED, WHITE);
     let fmt_on = format!("{}{}on {}", BOLD, GREEN, WHITE);
 
-    pwr_file.read_to_string(&mut pwr_status).expect(format!("{}Error while reading {}{}", RED, FILE_PWR_LED, C_RESET).as_str());
+    led_file.read_to_string(&mut led_status).expect(format!("{}Error while reading {}{}", RED, led_file_path, C_RESET).as_str());
 
-    if pwr_status.as_str().trim() == "0" {
+    if led_status.as_str().trim() == "0" {
         fmt_off
     }
-    else if pwr_status.as_str().trim() == "255"  || pwr_status.as_str().trim() == "1" {
+    else if led_status.as_str().trim() == "255"  || led_status.as_str().trim() == "1" {
         fmt_on
     }
     else {
