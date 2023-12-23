@@ -5,23 +5,23 @@ pub fn print_about() {
     println!(
         "           {RECONTROLLED_STR}
 * ------------------------------ *
-| Copyright (C) 2023 Juliandev02 |
-|       {RECONTROLLED_STR} 2022        |
+|    Copyright (C) 2022 - 2024   |
+|     Strawberry Foundations     |
 |                                |
 |       All rights reserved      |
-|    Made with the C Language    |
+|       Made with Rust Lang      |
 * ------------------------------ *
 
-              {YELLOW}WARNING{C_RESET}{WHITE}{BOLD}
+              {BOLD}{YELLOW}WARNING{C_RESET}{WHITE}{BOLD}
 * ------------------------------ *
 |    This program comes with     |
-|     absolutely {RED}{UNDERLINE}NO warranty     |
+|     absolutely {RED}{UNDERLINE}NO{C_RESET}{WHITE}{BOLD} warranty     |
 |                                |
-| This is free software, and you |
-| are welcome to redistribute it |
+| {LIGHT_GREEN}This is free software, and you{C_RESET}{WHITE}{BOLD} |
+| {LIGHT_GREEN}are welcome to redistribute it{C_RESET}{WHITE}{BOLD} |
 * ------------------------------ *
 
-                License
+                {BOLD}{GREEN}License{C_RESET}{WHITE}{BOLD}
 * ----------------------------------- *
 |                 MIT                 |
 |         Open Source License         |
