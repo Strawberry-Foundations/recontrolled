@@ -1,6 +1,6 @@
 use std::env;
 
-use crate::vars::modules::Status;
+use crate::vars::modules::{LED, Status};
 
 mod vars {
     pub mod colors;
@@ -13,7 +13,7 @@ mod basics {
     pub mod version;
     pub mod status;
 }
-mod pwr {
+mod led {
     pub mod basic_handler;
 }
 
@@ -30,8 +30,8 @@ fn main() {
         "about" => basics::about::print_about(),
         "version" | "ver" => basics::version::print_version(),
         "status" => basics::status::print_status(),
-        "ar" => pwr::basic_handler::set_status(Status::ON),
-        "dr" => pwr::basic_handler::set_status(Status::OFF),
+        "ar" => led::basic_handler::set_status(LED::PWR, Status::ON),
+        "dr" => led::basic_handler::set_status(LED::PWR, Status::OFF),
         _ => basics::help::print_help()
     }
 }
