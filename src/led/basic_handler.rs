@@ -32,14 +32,14 @@ pub fn set_status(led: LED, status: Status) {
                 eprintln!("{}{}Error while writing to {}: {}{}", BOLD, RED, led_file_path, error, C_RESET);
                 std::process::exit(1);
             });
-            println!("{BOLD}{led_string} {WHITE}was {GREEN}activated");
+            println!("{BOLD}{led_string} {WHITE}was {GREEN}activated{C_RESET}");
         },
         Status::OFF => {
             led_file.write_all("0".as_bytes()).unwrap_or_else(|error| {
                 eprintln!("{}{}Error while writing to {}: {}{}", BOLD, RED, led_file_path, error, C_RESET);
                 std::process::exit(1);
             });
-            println!("{BOLD}{led_string} {WHITE}was {RED}deactivated");
+            println!("{BOLD}{led_string} {WHITE}was {RED}deactivated{C_RESET}");
         },
     }
 }
