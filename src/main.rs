@@ -38,6 +38,8 @@ fn main() {
         "status" => basics::status::print_status(),
         "ar" => led::basic_handler::set_status(LED::PWR, Status::ON),
         "dr" => led::basic_handler::set_status(LED::PWR, Status::OFF),
+        "ag" => led::basic_handler::set_status(LED::ACT, Status::ON),
+        "dg" => led::basic_handler::set_status(LED::ACT, Status::OFF),
         _ => basics::help::print_help()
     }
 }
