@@ -15,7 +15,7 @@ pub fn print_status() {
 | {RED}Power-LED {CYAN}   (led1){C_RESET}    {} |
 | {LIGHT_GREEN}Activity-LED {CYAN}(led0){C_RESET}    {} |
 |                            |
-* -------------------------- *
+* -------------------------- *{C_RESET}
         ",
         check_status(LED::PWR), check_status(LED::ACT)
     )
