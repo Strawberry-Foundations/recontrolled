@@ -1,5 +1,7 @@
 use std::env;
 
+use crate::vars::modules::Status;
+
 mod vars {
     pub mod colors;
     pub mod constants;
@@ -10,6 +12,9 @@ mod basics {
     pub mod about;
     pub mod version;
     pub mod status;
+}
+mod pwr {
+    pub mod basic_handler;
 }
 
 fn main() {
@@ -25,6 +30,8 @@ fn main() {
         "about" => basics::about::print_about(),
         "version" | "ver" => basics::version::print_version(),
         "status" => basics::status::print_status(),
+        "ar" => pwr::basic_handler::set_status(Status::ON),
+        "dr" => pwr::basic_handler::set_status(Status::OFF),
         _ => basics::help::print_help()
     }
 }
