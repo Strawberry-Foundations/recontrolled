@@ -1,3 +1,4 @@
+use crate::vars::colors::C_RESET;
 use crate::vars::constants::{BUILD_DATE, RECONTROLLED_STR, VERSION};
 
 pub fn print_version() {
@@ -9,7 +10,7 @@ pub fn print_version() {
 |  by Strawberry Foundations |
 |                            |
 |        {}.       |
-* -------------------------- *
+* -------------------------- *{C_RESET}
         ",
         RECONTROLLED_STR.to_lowercase()
     )
