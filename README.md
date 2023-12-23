@@ -5,7 +5,7 @@ recontrolled is a rewrite of the old version of recontrolled, called [ledcontrol
 With recontrolled you can control the on-board LEDs of your Raspberry Pi. It is currently compatible with the Raspberry Pi 4 (Kernel 6.1+) You can turn on or off the Activity or Power LED. Or even let them blink in different rythm!
 
 ## How does it work?
-recontrolled was written in C. Using the system() function we can change the LED GPIO map more easily than you think. (Outdated. Will be changed in a future release)
+recontrolled was written in C, now it has been rewritten in Rust. It directly writes to the device files using `std::fs::File` and `use std::io::Write`.
 
 ## How can I install recontrolled?
 Go to our release page ([Click here](https://github.com/Strawberry-Foundations/recontrolled/releases)) and download the latest build. We currently only provide arm64 executables, but we will work on creating armhf executables.
