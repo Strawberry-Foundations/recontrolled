@@ -55,6 +55,21 @@ fn main() {
         "bgf" => led::blink::blink(LED::ACT, 500),
         "bgs" => led::blink::blink(LED::ACT, 2000),
         "bgff" => led::blink::blink(LED::ACT, 250),
+
+        // BLINK (CUSTOM)
+        "brc" => {
+            if args.len() < 3 {
+                eprintln!("{RED}{BOLD}Invalid argument for blink delay{C_RESET}");
+                basics::help::print_help();
+                std::process::exit(0)
+            }
+
+            led::blink::blink(LED::PWR, (&args[2]).parse::<u64>().unwrap_or_else(|_| {
+                eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
+                std::process::exit(1)
+            }))
+        },
+
         _ => basics::help::print_help()
     }
 }
