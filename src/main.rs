@@ -7,6 +7,7 @@ mod vars {
 mod basics {
     pub mod help;
     pub mod about;
+    pub mod version;
 }
 
 fn main() {
@@ -20,6 +21,7 @@ fn main() {
     match args[1].as_str() {
         "help" => basics::help::print_help(),
         "about" => basics::about::print_about(),
+        "version" | "ver" => basics::version::print_version(),
         _ => basics::help::print_help()
     }
 }
