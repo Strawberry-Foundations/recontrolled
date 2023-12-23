@@ -1,0 +1,22 @@
+#include "help.h"
+#include "version.h"
+#include "about.h"
+#include "status.h"
+#include "msleep.h"
+
+#include "led1/activate_red.h"
+#include "led1/deactivate_red.h"
+#include "led1/blink_red.h"
+#include "led1/blink_red_fast.h"
+#include "led1/blink_red_slow.h"
+#include "led1/blink_red_super_fast.h"
+
+#include "led0/activate_green.h"
+#include "led0/deactivate_green.h"
+#include "led0/blink_green.h"
+#include "led0/blink_green_fast.h"
+#include "led0/blink_green_slow.h"
+#include "led0/blink_green_super_fast.h"
+
+#include "leds/blink_sync.h"
+#include "leds/blink_switch.h"
