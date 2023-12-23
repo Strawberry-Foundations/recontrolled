@@ -25,7 +25,7 @@ pub fn print_help() {
 {BOLD}{WHITE}| {LIGHT_GREEN}  synchronized (custom delay){WHITE} | {PURPLE}bgf: Blinks Act-LED fast       {WHITE} |
 {BOLD}{WHITE}| {LIGHT_GREEN}lbsc <time>: Blink LEDs ...  {WHITE} | {PURPLE}bgs: Blinks Act-LED slow       {WHITE} |
 {BOLD}{WHITE}| {LIGHT_GREEN}  in switch (custom delay)   {WHITE} | {PURPLE}bgff: Blinks Act-LED super fast{WHITE} |
-{BOLD}{WHITE}* {DUMMY             }----------------------------- + ------------------------------- *
+{BOLD}{WHITE}* {DUMMY             }----------------------------- + -------------------------------{C_RESET}*
         ",
         BOLD, WHITE
     )
