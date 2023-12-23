@@ -1,7 +1,5 @@
 use crate::colors::*;
 
-const DUMMY: &str = "";
-
 pub fn print_help() {
 
     println!(
