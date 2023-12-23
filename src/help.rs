@@ -1,4 +1,4 @@
-use stblib::colors::{BLUE, BOLD, C_RESET, CYAN, GREEN, LIGHT_BLUE, LIGHT_CYAN, LIGHT_GREEN, LIGHT_MAGENTA, PURPLE, RED, WHITE, YELLOW};
+use crate::colors::*;
 
 const DUMMY: &str = "";
 
