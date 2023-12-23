@@ -39,13 +39,9 @@ fn check_status(led: LED) -> String {
 
     led_file.read_to_string(&mut led_status).expect(format!("{}Error while reading {}{}", RED, led_file_path, C_RESET).as_str());
 
-    if led_status.as_str().trim() == "0" {
-        fmt_off
-    }
-    else if led_status.as_str().trim() == "255"  || led_status.as_str().trim() == "1" {
-        fmt_on
-    }
-    else {
-        fmt_off
+    match led_status.as_str().trim() {
+        "0" => fmt_off,
+        "255" | "1" => fmt_on,
+        _ => fmt_off
     }
 }
