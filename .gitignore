@@ -1,7 +1,9 @@
-target
+/target
 build
 
 .vscode
 .idea
 
 Cargo.lock
+
+c
