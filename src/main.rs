@@ -17,6 +17,8 @@ mod basics {
 mod led {
     pub mod basic_handler;
     pub mod blink;
+    pub mod blink_sync;
+    pub mod blink_switch;
 }
 
 fn main() {
@@ -69,6 +71,22 @@ fn main() {
                 std::process::exit(1)
             }))
         },
+        "bgc" => {
+            if args.len() < 3 {
+                eprintln!("{RED}{BOLD}Invalid argument for blink delay{C_RESET}");
+                basics::help::print_help();
+                std::process::exit(0)
+            }
+
+            led::blink::blink(LED::ACT, (&args[2]).parse::<u64>().unwrap_or_else(|_| {
+                eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
+                std::process::exit(1)
+            }))
+        },
+
+        // SYNC MODE
+        "lb" => led::blink_sync::blink_sync(1000),
+        "lbs" => led::blink_switch::blink_switch(1000),
 
         _ => basics::help::print_help()
     }
