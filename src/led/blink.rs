@@ -7,6 +7,14 @@ use crate::vars::constants::{FILE_ACT_LED, FILE_PWR_LED};
 use crate::vars::modules::{LED};
 
 pub fn blink(led: LED, delay: u64) {
+    let blink_mode = match delay {
+        2000 => "Slow ",
+        1000 => "",
+        500 => "Fast ",
+        250 => "Super Fast ",
+        _ => "Custom "
+    };
+
     let led_file_path = match led {
         LED::PWR => FILE_PWR_LED,
         LED::ACT => FILE_ACT_LED
@@ -17,7 +25,7 @@ pub fn blink(led: LED, delay: u64) {
         LED::ACT => format!("{}Activity-LED", LIGHT_GREEN)
     };
 
-    println!("{BOLD}{WHITE}Blink mode for {led_string}{WHITE} was {GREEN}activated{C_RESET}");
+    println!("{BOLD}{WHITE}{blink_mode}Blink mode for {led_string}{WHITE} was {GREEN}activated{C_RESET}");
 
     let mut led_file = match led {
         LED::PWR => File::create(FILE_PWR_LED).unwrap_or_else(|error| {
