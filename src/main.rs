@@ -1,4 +1,5 @@
 use std::env;
+use crate::vars::colors::RED;
 
 mod vars {
     pub mod colors;
@@ -14,6 +15,11 @@ mod basics {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
+
+    if env::consts::OS != "linux" {
+        eprintln!("{}Platform '{}' is not supported, only Linux is supported.", RED, env::consts::OS);
+        std::process::exit(1)
+    }
 
     if args.len() < 2 {
         basics::help::print_help();
