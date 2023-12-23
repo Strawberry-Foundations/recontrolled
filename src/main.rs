@@ -16,13 +16,14 @@ mod basics {
 }
 mod led {
     pub mod basic_handler;
+    pub mod blink;
 }
 
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    if !cfg!(target_os = "linux") { 
-        panic!("{BOLD}{RED}Platform '{}' is not supported! Only Linux is supported!{C_RESET}", std::env::consts::OS); 
+    if !cfg!(target_os = "linux") {
+        panic!("{BOLD}{RED}Platform '{}' is not supported! Only Linux is supported!{C_RESET}", std::env::consts::OS);
     }
 
     if args.len() < 2 {
@@ -39,6 +40,8 @@ fn main() {
         "dr" => led::basic_handler::set_status(LED::PWR, Status::OFF),
         "ag" => led::basic_handler::set_status(LED::ACT, Status::ON),
         "dg" => led::basic_handler::set_status(LED::ACT, Status::OFF),
+        "br" => led::blink::blink(LED::PWR, 500),
+        "bg" => led::blink::blink(LED::ACT, 500),
         _ => basics::help::print_help()
     }
 }
