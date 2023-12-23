@@ -15,3 +15,5 @@ pub const LIGHT_GREEN: &str = "\x1b[92m";
 pub const LIGHT_BLUE: &str = "\x1b[94m";
 pub const LIGHT_MAGENTA: &str = "\x1b[95m";
 pub const LIGHT_CYAN: &str = "\x1b[96m";
+
+pub const DUMMY: &str = "";
