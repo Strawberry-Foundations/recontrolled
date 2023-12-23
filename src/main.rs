@@ -3,11 +3,13 @@ use std::env;
 mod vars {
     pub mod colors;
     pub mod constants;
+    pub mod modules;
 }
 mod basics {
     pub mod help;
     pub mod about;
     pub mod version;
+    pub mod status;
 }
 
 fn main() {
@@ -22,6 +24,7 @@ fn main() {
         "help" => basics::help::print_help(),
         "about" => basics::about::print_about(),
         "version" | "ver" => basics::version::print_version(),
+        "status" => basics::status::print_status(),
         _ => basics::help::print_help()
     }
 }
