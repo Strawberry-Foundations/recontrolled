@@ -32,16 +32,29 @@ fn main() {
     }
 
     match args[1].as_str() {
+        // BASIC
         "help" => basics::help::print_help(),
         "about" => basics::about::print_about(),
         "version" | "ver" => basics::version::print_version(),
         "status" => basics::status::print_status(),
+
+        // ACTIVATE / DEACTIVATE
         "ar" => led::basic_handler::set_status(LED::PWR, Status::ON),
         "dr" => led::basic_handler::set_status(LED::PWR, Status::OFF),
         "ag" => led::basic_handler::set_status(LED::ACT, Status::ON),
         "dg" => led::basic_handler::set_status(LED::ACT, Status::OFF),
-        "br" => led::blink::blink(LED::PWR, 500),
-        "bg" => led::blink::blink(LED::ACT, 500),
+
+        // BLINK (RED)
+        "br" => led::blink::blink(LED::PWR, 1000),
+        "brf" => led::blink::blink(LED::PWR, 500),
+        "brs" => led::blink::blink(LED::PWR, 2000),
+        "brff" => led::blink::blink(LED::PWR, 250),
+
+        // BLINK (GREEN)
+        "bg" => led::blink::blink(LED::ACT, 1000),
+        "bgf" => led::blink::blink(LED::ACT, 500),
+        "bgs" => led::blink::blink(LED::ACT, 2000),
+        "bgff" => led::blink::blink(LED::ACT, 250),
         _ => basics::help::print_help()
     }
 }
