@@ -17,19 +17,19 @@ pub fn print_status() {
 |                            |
 * -------------------------- *{C_RESET}
         ",
-        check_status(Led::PWR), check_status(Led::ACT)
+        check_status(Led::Pwr), check_status(Led::Act)
     )
 }
 
 fn check_status(led: Led) -> String {
     let led_file_path = match led {
-        Led::PWR => FILE_PWR_LED,
-        Led::ACT => FILE_ACT_LED
+        Led::Pwr => FILE_PWR_LED,
+        Led::Act => FILE_ACT_LED
     };
 
     let mut led_file = match led {
-        Led::PWR => File::open(FILE_PWR_LED).unwrap_or_else(|_| panic!("{}Error while opening {}{}", RED, FILE_PWR_LED, C_RESET)),
-        Led::ACT => File::open(FILE_ACT_LED).unwrap_or_else(|_| panic!("{}Error while opening {}{}", RED, FILE_ACT_LED, C_RESET)),
+        Led::Pwr => File::open(FILE_PWR_LED).unwrap_or_else(|_| panic!("{}Error while opening {}{}", RED, FILE_PWR_LED, C_RESET)),
+        Led::Act => File::open(FILE_ACT_LED).unwrap_or_else(|_| panic!("{}Error while opening {}{}", RED, FILE_ACT_LED, C_RESET)),
     };
 
     let mut led_status = String::new();
