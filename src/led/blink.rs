@@ -16,23 +16,23 @@ pub fn blink(led: Led, delay: u64) {
     };
 
     let led_file_path = match led {
-        Led::PWR => FILE_PWR_LED,
-        Led::ACT => FILE_ACT_LED
+        Led::Pwr => FILE_PWR_LED,
+        Led::Act => FILE_ACT_LED
     };
 
     let led_string = match led {
-        Led::PWR => format!("{}Power-LED", RED),
-        Led::ACT => format!("{}Activity-LED", LIGHT_GREEN)
+        Led::Pwr => format!("{}Power-LED", RED),
+        Led::Act => format!("{}Activity-LED", LIGHT_GREEN)
     };
 
     println!("{BOLD}{WHITE}{blink_mode}Blink mode for {led_string}{WHITE} was {GREEN}activated{C_RESET}");
 
     let mut led_file = match led {
-        Led::PWR => File::create(FILE_PWR_LED).unwrap_or_else(|error| {
+        Led::Pwr => File::create(FILE_PWR_LED).unwrap_or_else(|error| {
             eprintln!("{}{}Error while opening {}: {}{}", BOLD, RED, FILE_PWR_LED, error, C_RESET);
             std::process::exit(1);
         }),
-        Led::ACT => File::create(FILE_ACT_LED).unwrap_or_else(|error| {
+        Led::Act => File::create(FILE_ACT_LED).unwrap_or_else(|error| {
             eprintln!("{}{}Error while opening {}: {}{}", BOLD, RED, FILE_ACT_LED, error, C_RESET);
             std::process::exit(1);
         })
