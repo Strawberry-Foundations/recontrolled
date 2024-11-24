@@ -25,7 +25,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if !cfg!(target_os = "linux") {
-        panic!("{BOLD}{RED}Platform '{}' is not supported! Only Linux is supported!{C_RESET}", std::env::consts::OS);
+        panic!("{BOLD}{RED}Platform '{}' is not supported! Only Linux is supported!{C_RESET}", env::consts::OS);
     }
 
     if args.len() < 2 {
@@ -66,7 +66,7 @@ fn main() {
                 std::process::exit(0)
             }
 
-            led::blink::blink(LED::PWR, (&args[2]).parse::<u64>().unwrap_or_else(|_| {
+            led::blink::blink(LED::PWR, args[2].parse::<u64>().unwrap_or_else(|_| {
                 eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
                 std::process::exit(1)
             }))
@@ -78,7 +78,7 @@ fn main() {
                 std::process::exit(0)
             }
 
-            led::blink::blink(LED::ACT, (&args[2]).parse::<u64>().unwrap_or_else(|_| {
+            led::blink::blink(LED::ACT, args[2].parse::<u64>().unwrap_or_else(|_| {
                 eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
                 std::process::exit(1)
             }))
@@ -96,7 +96,7 @@ fn main() {
                 std::process::exit(0)
             }
 
-            led::blink_sync::blink_sync((&args[2]).parse::<u64>().unwrap_or_else(|_| {
+            led::blink_sync::blink_sync(args[2].parse::<u64>().unwrap_or_else(|_| {
                 eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
                 std::process::exit(1)
             }))
@@ -108,7 +108,7 @@ fn main() {
                 std::process::exit(0)
             }
 
-            led::blink_switch::blink_switch((&args[2]).parse::<u64>().unwrap_or_else(|_| {
+            led::blink_switch::blink_switch(args[2].parse::<u64>().unwrap_or_else(|_| {
                 eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
                 std::process::exit(1)
             }))
