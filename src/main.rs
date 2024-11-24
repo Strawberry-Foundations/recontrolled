@@ -1,7 +1,7 @@
 use std::env;
-use crate::utils::model::{get_raspberry_pi_model, is_supported_board};
+use crate::utils::model::get_raspberry_pi_model;
 use crate::constants::colors::{BOLD, RED, C_RESET};
-use crate::constants::modules::{Led, Status};
+use crate::constants::modules::{Led, RaspberryPiModel, Status};
 
 mod basics;
 mod led;
@@ -15,12 +15,16 @@ fn main() {
         panic_err!("{BOLD}{RED}Platform '{}' is not supported! Only Linux is supported!{C_RESET}", env::consts::OS);
     }
 
-    if let Some(model) = get_raspberry_pi_model() {
-        if !is_supported_board(&model) {
-            panic_err!("{BOLD}{RED}This Raspberry Pi Model ({model}) is not supported!{C_RESET}");
+    let pi_model = get_raspberry_pi_model()
+        .and_then(|model| RaspberryPiModel::from_model_name(&model));
+
+    match pi_model {
+        Some(model) => {
+            let pi_model = model; 
         }
-    } else {
-        panic_err!("{BOLD}{RED}Could not detect Raspberry Pi Model!{C_RESET}");
+        None => {
+            panic_err!("{BOLD}{RED}This Raspberry Pi Model is not supported!{C_RESET}");
+        }
     }
 
     if args.len() < 2 {
