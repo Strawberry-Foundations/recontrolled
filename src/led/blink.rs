@@ -2,9 +2,9 @@ use std::fs::File;
 use std::io::Write;
 use std::thread;
 use std::time::Duration;
-use crate::vars::colors::{BOLD, GREEN, RED, WHITE, C_RESET, LIGHT_GREEN};
-use crate::vars::constants::{FILE_ACT_LED, FILE_PWR_LED};
-use crate::vars::modules::{Led};
+use crate::constants::colors::{BOLD, GREEN, RED, WHITE, C_RESET, LIGHT_GREEN};
+use crate::constants::constants::{FILE_ACT_LED, FILE_PWR_LED};
+use crate::constants::modules::{Led};
 
 pub fn blink(led: Led, delay: u64) {
     let blink_mode = match delay {

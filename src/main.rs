@@ -1,25 +1,12 @@
 use std::env;
-use crate::vars::colors::{BOLD, RED, C_RESET};
+use crate::utils::model::get_raspberry_pi_model;
+use crate::constants::colors::{BOLD, RED, C_RESET};
+use crate::constants::modules::{Led, Status};
 
-use crate::vars::modules::{Led, Status};
-
-mod vars {
-    pub mod colors;
-    pub mod constants;
-    pub mod modules;
-}
-mod basics {
-    pub mod help;
-    pub mod about;
-    pub mod version;
-    pub mod status;
-}
-mod led {
-    pub mod basic_handler;
-    pub mod blink;
-    pub mod blink_sync;
-    pub mod blink_switch;
-}
+mod basics;
+mod led;
+mod constants;
+mod utils;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
