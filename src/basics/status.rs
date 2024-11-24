@@ -3,7 +3,7 @@ use std::io::Read;
 
 use crate::vars::colors::{BOLD, C_RESET, CYAN, GREEN, LIGHT_GREEN, RED, WHITE};
 use crate::vars::constants::{RECONTROLLED_STR, FILE_ACT_LED, FILE_PWR_LED};
-use crate::vars::modules::LED;
+use crate::vars::modules::Led;
 
 pub fn print_status() {
     println!(
@@ -17,19 +17,19 @@ pub fn print_status() {
 |                            |
 * -------------------------- *{C_RESET}
         ",
-        check_status(LED::PWR), check_status(LED::ACT)
+        check_status(Led::PWR), check_status(Led::ACT)
     )
 }
 
-fn check_status(led: LED) -> String {
+fn check_status(led: Led) -> String {
     let led_file_path = match led {
-        LED::PWR => FILE_PWR_LED,
-        LED::ACT => FILE_ACT_LED
+        Led::PWR => FILE_PWR_LED,
+        Led::ACT => FILE_ACT_LED
     };
 
     let mut led_file = match led {
-        LED::PWR => File::open(FILE_PWR_LED).unwrap_or_else(|_| panic!("{}Error while opening {}{}", RED, FILE_PWR_LED, C_RESET)),
-        LED::ACT => File::open(FILE_ACT_LED).unwrap_or_else(|_| panic!("{}Error while opening {}{}", RED, FILE_ACT_LED, C_RESET)),
+        Led::PWR => File::open(FILE_PWR_LED).unwrap_or_else(|_| panic!("{}Error while opening {}{}", RED, FILE_PWR_LED, C_RESET)),
+        Led::ACT => File::open(FILE_ACT_LED).unwrap_or_else(|_| panic!("{}Error while opening {}{}", RED, FILE_ACT_LED, C_RESET)),
     };
 
     let mut led_status = String::new();
