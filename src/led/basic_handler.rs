@@ -6,40 +6,40 @@ use crate::vars::modules::{Led, Status};
 
 pub fn set_status(led: Led, status: Status) {
     let led_file_path = match led {
-        Led::PWR => FILE_PWR_LED,
-        Led::ACT => FILE_ACT_LED
+        Led::Pwr => FILE_PWR_LED,
+        Led::Act => FILE_ACT_LED
     };
 
     let led_string = match led {
-        Led::PWR => format!("{}Power-LED", RED),
-        Led::ACT => format!("{}Activity-LED", LIGHT_GREEN)
+        Led::Pwr => format!("{}Power-LED", RED),
+        Led::Act => format!("{}Activity-LED", LIGHT_GREEN)
     };
 
     let mut led_file = match led {
-        Led::PWR => File::create(FILE_PWR_LED).unwrap_or_else(|error| {
+        Led::Pwr => File::create(FILE_PWR_LED).unwrap_or_else(|error| {
             eprintln!("{}{}Error while opening {}: {}{}", BOLD, RED, FILE_PWR_LED, error, C_RESET);
             std::process::exit(1);
         }),
-        Led::ACT => File::create(FILE_ACT_LED).unwrap_or_else(|error| {
+        Led::Act => File::create(FILE_ACT_LED).unwrap_or_else(|error| {
             eprintln!("{}{}Error while opening {}: {}{}", BOLD, RED, FILE_ACT_LED, error, C_RESET);
             std::process::exit(1);
         })
     };
 
     match status {
-        Status::ON => {
+        Status::On => {
             led_file.write_all("1".as_bytes()).unwrap_or_else(|error| {
                 eprintln!("{}{}Error while writing to {}: {}{}", BOLD, RED, led_file_path, error, C_RESET);
                 std::process::exit(1);
             });
             println!("{BOLD}{led_string} {WHITE}was {GREEN}activated{C_RESET}");
-        },
-        Status::OFF => {
+        }
+        Status::Off => {
             led_file.write_all("0".as_bytes()).unwrap_or_else(|error| {
                 eprintln!("{}{}Error while writing to {}: {}{}", BOLD, RED, led_file_path, error, C_RESET);
                 std::process::exit(1);
             });
             println!("{BOLD}{led_string} {WHITE}was {RED}deactivated{C_RESET}");
-        },
+        }
     }
 }
