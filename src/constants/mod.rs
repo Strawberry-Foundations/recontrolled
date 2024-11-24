@@ -1,5 +1,6 @@
 pub mod colors;
 pub mod modules;
+pub mod boards;
 
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub const BUILD_DATE: &str = "2024-11-24";

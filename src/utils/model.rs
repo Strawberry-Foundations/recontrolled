@@ -1,4 +1,5 @@
 use std::fs;
+use crate::constants::boards::SUPPORTED_BOARDS;
 
 pub fn get_raspberry_pi_model() -> Option<String> {
     if let Ok(cpuinfo) = fs::read_to_string("/proc/cpuinfo") {
@@ -13,3 +14,6 @@ pub fn get_raspberry_pi_model() -> Option<String> {
     None
 }
 
+pub fn is_supported_board(model: &str) -> bool {
+    SUPPORTED_BOARDS.iter().any(|&board| model.starts_with(board))
+}
