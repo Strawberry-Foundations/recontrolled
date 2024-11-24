@@ -41,22 +41,22 @@ fn main() {
         "status" => basics::status::print_status(),
 
         // ACTIVATE / DEACTIVATE
-        "ar" => led::basic_handler::set_status(Led::PWR, Status::ON),
-        "dr" => led::basic_handler::set_status(Led::PWR, Status::OFF),
-        "ag" => led::basic_handler::set_status(Led::ACT, Status::ON),
-        "dg" => led::basic_handler::set_status(Led::ACT, Status::OFF),
+        "ar" => led::basic_handler::set_status(Led::Pwr, Status::On),
+        "dr" => led::basic_handler::set_status(Led::Pwr, Status::Off),
+        "ag" => led::basic_handler::set_status(Led::Act, Status::On),
+        "dg" => led::basic_handler::set_status(Led::Act, Status::Off),
 
         // BLINK (RED)
-        "br" => led::blink::blink(Led::PWR, 1000),
-        "brf" => led::blink::blink(Led::PWR, 500),
-        "brs" => led::blink::blink(Led::PWR, 2000),
-        "brff" => led::blink::blink(Led::PWR, 250),
+        "br" => led::blink::blink(Led::Pwr, 1000),
+        "brf" => led::blink::blink(Led::Pwr, 500),
+        "brs" => led::blink::blink(Led::Pwr, 2000),
+        "brff" => led::blink::blink(Led::Pwr, 250),
 
         // BLINK (GREEN)
-        "bg" => led::blink::blink(Led::ACT, 1000),
-        "bgf" => led::blink::blink(Led::ACT, 500),
-        "bgs" => led::blink::blink(Led::ACT, 2000),
-        "bgff" => led::blink::blink(Led::ACT, 250),
+        "bg" => led::blink::blink(Led::Act, 1000),
+        "bgf" => led::blink::blink(Led::Act, 500),
+        "bgs" => led::blink::blink(Led::Act, 2000),
+        "bgff" => led::blink::blink(Led::Act, 250),
 
         // BLINK (CUSTOM)
         "brc" => {
@@ -66,7 +66,7 @@ fn main() {
                 std::process::exit(0)
             }
 
-            led::blink::blink(Led::PWR, args[2].parse::<u64>().unwrap_or_else(|_| {
+            led::blink::blink(Led::Pwr, args[2].parse::<u64>().unwrap_or_else(|_| {
                 eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
                 std::process::exit(1)
             }))
@@ -78,7 +78,7 @@ fn main() {
                 std::process::exit(0)
             }
 
-            led::blink::blink(Led::ACT, args[2].parse::<u64>().unwrap_or_else(|_| {
+            led::blink::blink(Led::Act, args[2].parse::<u64>().unwrap_or_else(|_| {
                 eprintln!("{RED}{BOLD}Invalid type for blink delay{C_RESET}");
                 std::process::exit(1)
             }))
