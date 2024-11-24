@@ -1,5 +1,5 @@
-pub const VERSION: &str = "3.0.0";
-pub const BUILD_DATE: &str = "2023-12-23";
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
+pub const BUILD_DATE: &str = "2024-11-24";
 
 pub const FILE_PWR_LED: &str = "/sys/class/leds/PWR/brightness";
 pub const FILE_ACT_LED: &str = "/sys/class/leds/ACT/brightness";
