@@ -1,9 +1,9 @@
 pub enum Led {
-    ACT = 0,
-    PWR = 1
+    Act = 0,
+    Pwr = 1
 }
 
 pub enum Status {
-    ON = 1,
-    OFF = 0,
+    On = 1,
+    Off = 0,
 }
