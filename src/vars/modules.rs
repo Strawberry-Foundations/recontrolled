@@ -1,4 +1,4 @@
-pub enum LED {
+pub enum Led {
     ACT = 0,
     PWR = 1
 }
