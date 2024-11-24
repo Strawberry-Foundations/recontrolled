@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::Write;
 use crate::constants::colors::{BOLD, GREEN, RED, WHITE, C_RESET, LIGHT_GREEN};
-use crate::constants::constants::{FILE_ACT_LED, FILE_PWR_LED};
+use crate::constants::{FILE_ACT_LED, FILE_PWR_LED};
 use crate::constants::modules::{Led, Status};
 
 pub fn set_status(led: Led, status: Status) {

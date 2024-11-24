@@ -1,5 +1,5 @@
 use crate::constants::colors::*;
-use crate::constants::constants::RECONTROLLED_STR;
+use crate::constants::RECONTROLLED_STR;
 
 pub fn print_about() {
     println!(

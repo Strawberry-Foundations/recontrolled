@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::Read;
 
 use crate::constants::colors::{BOLD, C_RESET, CYAN, GREEN, LIGHT_GREEN, RED, WHITE};
-use crate::constants::constants::{RECONTROLLED_STR, FILE_ACT_LED, FILE_PWR_LED};
+use crate::constants::{RECONTROLLED_STR, FILE_ACT_LED, FILE_PWR_LED};
 use crate::constants::modules::Led;
 
 pub fn print_status() {
