@@ -1,11 +1,16 @@
 use crate::constants::colors::{BOLD, C_RESET, GREEN, LIGHT_GREEN, RED, WHITE};
 use crate::core::model::RaspberryPi;
 use crate::core::led::{Led, Status};
+use crate::panic_err;
 
 use std::thread;
 use std::time::Duration;
 
 pub fn blink_sync(delay: u64, model: Box<dyn RaspberryPi>) {
+    if !model.supports_led(Led::Act) || !model.supports_led(Led::Pwr) {
+        panic_err!("{BOLD}{RED}Error: {WHITE}The selected LED is not supported by the current model{C_RESET}");
+    }
+    
     let blink_mode = match delay {
         2000 => "Slow ",
         1000 => "",

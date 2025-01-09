@@ -4,8 +4,13 @@ use crate::core::model::RaspberryPi;
 
 use std::thread;
 use std::time::Duration;
+use crate::panic_err;
 
 pub fn blink(led: Led, delay: u64, model: Box<dyn RaspberryPi>) {
+    if !model.supports_led(led) {
+        panic_err!("{BOLD}{RED}Error: {WHITE}The selected LED is not supported by the current model{C_RESET}");
+    }
+    
     let blink_mode = match delay {
         2000 => "Slow ",
         1000 => "",
