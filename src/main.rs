@@ -1,10 +1,9 @@
 use crate::constants::colors::{BOLD, C_RESET, RED};
 use crate::core::led::{Led, Status};
-use crate::core::model::{RaspberryPi, RaspberryPiModel};
+use crate::core::model::{RaspberryPi, RaspberryPiModel, get_raspberry_pi_model};
 use crate::core::rp02w::RaspberryPiZero2W;
 use crate::core::rp4::RaspberryPi4B;
 use crate::core::rp5::RaspberryPi5B;
-use crate::utils::model::get_raspberry_pi_model;
 
 use std::env;
 use std::env::consts::OS;
