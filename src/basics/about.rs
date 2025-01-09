@@ -5,7 +5,7 @@ pub fn print_about() {
     println!(
         "           {RECONTROLLED_STR}
 * ------------------------------ *
-|    Copyright (C) 2022 - 2024   |
+|    Copyright (C) 2022 - 2025   |
 |     Strawberry Foundations     |
 |                                |
 |       All rights reserved      |
