@@ -3,7 +3,7 @@ use crate::constants::RECONTROLLED_STR;
 use crate::core::led::{Led, Status};
 use crate::core::model::RaspberryPi;
 
-pub fn print_status(model: Box<dyn RaspberryPi>) {
+pub fn status(model: Box<dyn RaspberryPi>) {
     let led_map = model.get_led_map();
 
     let pwr_supported = led_map

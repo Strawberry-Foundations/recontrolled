@@ -79,9 +79,9 @@ fn main() {
 
     match args[1].as_str() {
         // Basic Commands
-        "about" => basics::about::print_about(model),
-        "version" | "ver" => basics::version::print_version(),
-        "status" => basics::status::print_status(model),
+        "about" => basics::about::about(model),
+        "version" | "ver" => basics::version::version(),
+        "status" => basics::status::status(model),
 
         // LED Control
         "ar" => led::basic_handler::set_status(Led::Pwr, Status::On),

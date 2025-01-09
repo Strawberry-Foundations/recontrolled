@@ -1,7 +1,7 @@
 use crate::constants::colors::C_RESET;
 use crate::constants::{BUILD_DATE, RECONTROLLED_STR, VERSION};
 
-pub fn print_version() {
+pub fn version() {
     println!(
         "         {RECONTROLLED_STR}
 * -------------------------- *
