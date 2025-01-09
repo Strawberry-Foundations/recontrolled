@@ -99,6 +99,8 @@ pub trait RaspberryPi {
     }
     
     fn supports_led(&self, led: Led) -> bool {
-        self.get_led_map().iter().any(|(l, _)| *l == led)
+        self.get_led_map()
+            .iter()
+            .any(|(l, supported)| *l == led && *supported)
     }
 }
