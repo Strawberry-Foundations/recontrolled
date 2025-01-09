@@ -1,6 +1,10 @@
+#![allow(dead_code)]
+
 use crate::constants::colors::{C_RESET, RED};
 use crate::core::led::{Led, Status};
+use crate::panic_err;
 
+use std::fs::File;
 use std::io::{Read, Write};
 
 pub fn get_raspberry_pi_model() -> Option<String> {
@@ -47,14 +51,14 @@ pub trait RaspberryPi {
 
     fn get_led_status(&self, led: Led) -> Status {
         let file_path = self.get_led_file(led);
-        let mut led_file = std::fs::File::open(file_path)
-            .unwrap_or_else(|_| panic!("{RED}Error while opening {file_path}{C_RESET}"));
+        let mut led_file = File::open(file_path)
+            .unwrap_or_else(|err| panic_err!("{RED}Error while opening {file_path}: {err}{C_RESET}"));
 
         let mut led_status = String::new();
 
         led_file
             .read_to_string(&mut led_status)
-            .unwrap_or_else(|_| panic!("{RED}Error while reading {file_path}{C_RESET}"));
+            .unwrap_or_else(|err| panic_err!("{RED}Error while reading {file_path}: {err}{C_RESET}"));
 
         match led_status.as_str().trim() {
             "255" | "1" => Status::On,
@@ -62,10 +66,27 @@ pub trait RaspberryPi {
         }
     }
 
+    fn get_led_object(&self, led: Led) -> File {
+        let file = self.get_led_file(led);
+        File::open(file)
+            .unwrap_or_else(|err| panic_err!("{RED}Error while opening {file}: {err}{C_RESET}"))
+    }
+
+    fn write_to_led(&self, mut file: &File, file_path: &str, status: Status) {
+        let status = match status {
+            Status::On => "1",
+            Status::Off => "0",
+        };
+
+        file
+            .write_all(status.as_bytes())
+            .unwrap_or_else(|err| panic_err!("{RED}Error while writing to {file_path}: {err}{C_RESET}"));
+    }
+
     fn set_led_status(&self, led: Led, status: Status) {
         let file_path = self.get_led_file(led);
-        let mut led_file = std::fs::File::create(file_path)
-            .unwrap_or_else(|_| panic!("{RED}Error while opening {file_path}{C_RESET}"));
+        let mut led_file = File::create(file_path)
+            .unwrap_or_else(|err| panic_err!("{RED}Error while opening {file_path}: {err}{C_RESET}"));
 
         let status = match status {
             Status::On => "1",
@@ -74,6 +95,6 @@ pub trait RaspberryPi {
 
         led_file
             .write_all(status.as_bytes())
-            .unwrap_or_else(|_| panic!("{RED}Error while writing to {file_path}{C_RESET}"));
+            .unwrap_or_else(|err| panic_err!("{RED}Error while writing to {file_path}: {err}{C_RESET}"));
     }
 }
