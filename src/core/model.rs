@@ -97,4 +97,8 @@ pub trait RaspberryPi {
             .write_all(status.as_bytes())
             .unwrap_or_else(|err| panic_err!("{RED}Error while writing to {file_path}: {err}{C_RESET}"));
     }
+    
+    fn supports_led(&self, led: Led) -> bool {
+        self.get_led_map().iter().any(|(l, _)| *l == led)
+    }
 }
