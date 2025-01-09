@@ -1,10 +1,10 @@
-#[derive(Debug, Ord, PartialOrd, Eq, PartialEq)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Copy, Clone)]
 pub enum Led {
     Act,
     Pwr
 }
 
-#[derive(Debug)]
+#[derive(Debug, Copy, Clone)]
 pub enum Status {
     On,
     Off,

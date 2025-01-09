@@ -1,3 +1,4 @@
+use crate::constants::FILE_ACT_LED;
 use crate::core::led::Led;
 use crate::core::model::{RaspberryPi, RaspberryPiModel};
 
@@ -32,7 +33,7 @@ impl RaspberryPiZero2W {
             model: RaspberryPiModel::PiZero2W,
             led_map: [(Led::Pwr, false), (Led::Act, true)],
             file_pwr_led: "",
-            file_act_led: "/sys/class/leds/ACT/brightness",
+            file_act_led: FILE_ACT_LED,
         }
     }
 }

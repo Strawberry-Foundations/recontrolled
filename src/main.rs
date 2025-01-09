@@ -19,7 +19,7 @@ const FAST_BLINK_DELAY: u64 = 500;
 const SLOW_BLINK_DELAY: u64 = 2000;
 const SUPER_FAST_DELAY: u64 = 250;
 
-fn handle_custom_blink(args: &[String], led: Led) {
+fn handle_custom_blink(args: &[String], led: Led, model: Box<dyn RaspberryPi>) {
     if args.len() < 3 {
         eprintln!("{RED}{BOLD}Invalid argument for blink delay{C_RESET}");
         basics::help::print_help();
@@ -31,12 +31,12 @@ fn handle_custom_blink(args: &[String], led: Led) {
         std::process::exit(1);
     });
 
-    led::blink::blink(led, delay);
+    led::blink::blink(led, delay, model);
 }
 
-fn handle_sync_mode(args: &[String], sync_fn: fn(u64)) {
+fn handle_sync_mode(args: &[String], sync_fn: fn(u64, Box<dyn RaspberryPi>), model: Box<dyn RaspberryPi>) {
     if args.len() < 3 {
-        sync_fn(DEFAULT_BLINK_DELAY);
+        sync_fn(DEFAULT_BLINK_DELAY, model);
         return;
     }
 
@@ -45,7 +45,7 @@ fn handle_sync_mode(args: &[String], sync_fn: fn(u64)) {
         std::process::exit(1);
     });
 
-    sync_fn(delay);
+    sync_fn(delay, model);
 }
 
 fn main() {
@@ -84,30 +84,30 @@ fn main() {
         "status" => basics::status::status(model),
 
         // LED Control
-        "ar" => led::basic_handler::set_status(Led::Pwr, Status::On),
-        "dr" => led::basic_handler::set_status(Led::Pwr, Status::Off),
-        "ag" => led::basic_handler::set_status(Led::Act, Status::On),
-        "dg" => led::basic_handler::set_status(Led::Act, Status::Off),
+        "ar" => led::basic_handler::set_status(Led::Pwr, Status::On, model),
+        "dr" => led::basic_handler::set_status(Led::Pwr, Status::Off, model),
+        "ag" => led::basic_handler::set_status(Led::Act, Status::On, model),
+        "dg" => led::basic_handler::set_status(Led::Act, Status::Off, model),
 
         // Blink modes for Power LED
-        "br" => led::blink::blink(Led::Pwr, DEFAULT_BLINK_DELAY),
-        "brf" => led::blink::blink(Led::Pwr, FAST_BLINK_DELAY),
-        "brs" => led::blink::blink(Led::Pwr, SLOW_BLINK_DELAY),
-        "brff" => led::blink::blink(Led::Pwr, SUPER_FAST_DELAY),
-        "brc" => handle_custom_blink(&args, Led::Pwr),
+        "br" => led::blink::blink(Led::Pwr, DEFAULT_BLINK_DELAY, model),
+        "brf" => led::blink::blink(Led::Pwr, FAST_BLINK_DELAY, model),
+        "brs" => led::blink::blink(Led::Pwr, SLOW_BLINK_DELAY, model),
+        "brff" => led::blink::blink(Led::Pwr, SUPER_FAST_DELAY, model),
+        "brc" => handle_custom_blink(&args, Led::Pwr, model),
 
         // Blink modes for Activity LED
-        "bg" => led::blink::blink(Led::Act, DEFAULT_BLINK_DELAY),
-        "bgf" => led::blink::blink(Led::Act, FAST_BLINK_DELAY),
-        "bgs" => led::blink::blink(Led::Act, SLOW_BLINK_DELAY),
-        "bgff" => led::blink::blink(Led::Act, SUPER_FAST_DELAY),
-        "bgc" => handle_custom_blink(&args, Led::Act),
+        "bg" => led::blink::blink(Led::Act, DEFAULT_BLINK_DELAY, model),
+        "bgf" => led::blink::blink(Led::Act, FAST_BLINK_DELAY, model),
+        "bgs" => led::blink::blink(Led::Act, SLOW_BLINK_DELAY, model),
+        "bgff" => led::blink::blink(Led::Act, SUPER_FAST_DELAY, model),
+        "bgc" => handle_custom_blink(&args, Led::Act, model),
 
         // Sync modes
-        "lb" => led::blink_sync::blink_sync(DEFAULT_BLINK_DELAY),
-        "lbs" => led::blink_switch::blink_switch(DEFAULT_BLINK_DELAY),
-        "lbc" => handle_sync_mode(&args, led::blink_sync::blink_sync),
-        "lbsc" => handle_sync_mode(&args, led::blink_switch::blink_switch),
+        "lb" => led::blink_sync::blink_sync(DEFAULT_BLINK_DELAY, model),
+        "lbs" => led::blink_switch::blink_switch(DEFAULT_BLINK_DELAY, model),
+        "lbc" => handle_sync_mode(&args, led::blink_sync::blink_sync, model),
+        "lbsc" => handle_sync_mode(&args, led::blink_switch::blink_switch, model),
         _ => basics::help::print_help(),
     }
 }

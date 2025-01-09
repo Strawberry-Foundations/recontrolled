@@ -1,3 +1,4 @@
+use crate::constants::{FILE_ACT_LED, FILE_PWR_LED};
 use crate::core::led::Led;
 use crate::core::model::{RaspberryPi, RaspberryPiModel};
 
@@ -31,8 +32,8 @@ impl RaspberryPi5B {
         Self {
             model: RaspberryPiModel::Pi5B,
             led_map: [(Led::Pwr, true), (Led::Act, true)],
-            file_pwr_led: "/sys/class/leds/PWR/brightness",
-            file_act_led: "/sys/class/leds/ACT/brightness",
+            file_pwr_led: FILE_PWR_LED,
+            file_act_led: FILE_ACT_LED,
         }
     }
 }
