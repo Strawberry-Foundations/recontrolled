@@ -25,15 +25,15 @@ Otherwise recontrolled will not work
 | Model             | State                                                 | Process                                                       | 
 | --                | --                                                    | --                                                            | 
 | Pi 4              | ![](https://img.shields.io/badge/Supported-success)   | ![](https://img.shields.io/badge/Tested-success)              |   
-| Pi 5              | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Not_planned/No_tester-red)   |  
+| Pi 5              | ![](https://img.shields.io/badge/Supported-success)   | ![](https://img.shields.io/badge/Tested-success)              |  
+| Pi Zero 2W        | ![](https://img.shields.io/badge/Supported-success)   | ![](https://img.shields.io/badge/Tested-success)              |
+| Pi Zero           | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Should_work-orange)          |
+| Pi Zero W         | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Should_work-orange)          |
 | Pi 3B+            | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Not_planned/No_tester-red)   |  
 | Pi 3B             | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Not_planned/No_tester-red)   |  
 | Pi 3A+            | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Not_planned/No_tester-red)   |  
 | Pi 1B+            | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Not_planned/No_tester-red)   |  
 | Pi 1A+            | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Not_planned/No_tester-red)   |  
-| Pi Zero           | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Not_planned/No_tester-red)   |
-| Pi Zero W         | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/Not_planned/No_tester-red)   |
-| Pi Zero 2W        | ![](https://img.shields.io/badge/Untested-orange)     | ![](https://img.shields.io/badge/(Maybe)_Future-orange)       |
 | Pi 1B             | ![](https://img.shields.io/badge/Unsupported-red)     | ![](https://img.shields.io/badge/Not_supported_(Official)-red)|  
 | Pi 2B             | ![](https://img.shields.io/badge/Unsupported-red)     | ![](https://img.shields.io/badge/Not_supported_(Official)-red)|  
 
