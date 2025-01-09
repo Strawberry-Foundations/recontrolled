@@ -1,7 +1,8 @@
 use crate::constants::colors::*;
 use crate::constants::RECONTROLLED_STR;
+use crate::core::model::RaspberryPi;
 
-pub fn print_about() {
+pub fn print_about(model: Box<dyn RaspberryPi>) {
     println!(
         "           {RECONTROLLED_STR}
 * ------------------------------ *
@@ -28,6 +29,9 @@ pub fn print_about() {
 |                                     |
 | https://opensource.org/license/mit/ |
 * ----------------------------------- *{C_RESET}
-        "
+
+{BOLD}{C_RESET}Running on {CYAN}{}{C_RESET}{WHITE}
+        ",
+        model.get_model_name()
     )
 }
