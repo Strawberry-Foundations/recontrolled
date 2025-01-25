@@ -1,4 +1,7 @@
-# **Recontrolled - By Strawberry Foundations**
+<div align="center">
+    <h1> 💡 Recontrolled</h1>
+    <h3>A simple program to control the on-board LEDs of your Raspberry Pi!</h3>
+</div>
 
 ## What is recontrolled?
 recontrolled is a rewrite of the old version of recontrolled, called [ledcontrol](https://github.com/Strawberry-Software-Industries/ledcontrol). 
