@@ -1,6 +1,6 @@
 use crate::constants::{FILE_ACT_LED, FILE_PWR_LED};
 use crate::core::led::Led;
-use crate::core::model::{RaspberryPi, RaspberryPiModel};
+use crate::core::hardware::{RaspberryPi, RaspberryPiModel};
 
 #[derive(Debug)]
 pub struct RaspberryPi5B {
@@ -28,7 +28,7 @@ impl RaspberryPi for RaspberryPi5B {
 }
 
 impl RaspberryPi5B {
-    pub fn new() -> Self {
+    pub const fn new() -> Self {
         Self {
             model: RaspberryPiModel::Pi5B,
             led_map: [(Led::Pwr, true), (Led::Act, true)],
