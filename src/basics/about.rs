@@ -1,6 +1,6 @@
-use crate::constants::colors::*;
+use crate::constants::colors::{BOLD, YELLOW, C_RESET, WHITE, RED, UNDERLINE, LIGHT_GREEN, GREEN, CYAN};
 use crate::constants::RECONTROLLED_STR;
-use crate::core::model::RaspberryPi;
+use crate::core::hardware::RaspberryPi;
 
 pub fn about(model: Box<dyn RaspberryPi>) {
     println!(
@@ -33,5 +33,5 @@ pub fn about(model: Box<dyn RaspberryPi>) {
 {BOLD}{C_RESET}Running on {CYAN}{}{C_RESET}{WHITE}
         ",
         model.get_model_name()
-    )
+    );
 }
