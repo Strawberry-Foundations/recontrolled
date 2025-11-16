@@ -1,3 +1,5 @@
+#![warn(clippy::pedantic, clippy::nursery)]
+
 use crate::constants::colors::{BOLD, C_RESET, RED};
 use crate::core::led::{Led, Status};
 use crate::core::model::{RaspberryPi, RaspberryPiModel, get_raspberry_pi_model};
