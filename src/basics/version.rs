@@ -13,5 +13,5 @@ pub fn version() {
 * -------------------------- *{C_RESET}
         ",
         RECONTROLLED_STR.to_lowercase()
-    )
+    );
 }
