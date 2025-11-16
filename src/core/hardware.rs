@@ -26,19 +26,19 @@ pub enum RaspberryPiModel {
 }
 
 impl RaspberryPiModel {
-    pub fn to_raw(&self) -> &str {
+    pub const fn to_raw(&self) -> &str {
         match self {
-            RaspberryPiModel::PiZero2W => "Raspberry Pi Zero 2 W",
-            RaspberryPiModel::Pi4B => "Raspberry Pi 4 Model B",
-            RaspberryPiModel::Pi5B => "Raspberry Pi 5 Model B",
+            Self::PiZero2W => "Raspberry Pi Zero 2 W",
+            Self::Pi4B => "Raspberry Pi 4 Model B",
+            Self::Pi5B => "Raspberry Pi 5 Model B",
         }
     }
 
     pub fn from_raw(model: &str) -> Option<Self> {
         match model {
-            name if name.starts_with("Raspberry Pi Zero 2 W") => Some(RaspberryPiModel::PiZero2W),
-            name if name.starts_with("Raspberry Pi 4 Model B") => Some(RaspberryPiModel::Pi4B),
-            name if name.starts_with("Raspberry Pi 5 Model B") => Some(RaspberryPiModel::Pi5B),
+            name if name.starts_with("Raspberry Pi Zero 2 W") => Some(Self::PiZero2W),
+            name if name.starts_with("Raspberry Pi 4 Model B") => Some(Self::Pi4B),
+            name if name.starts_with("Raspberry Pi 5 Model B") => Some(Self::Pi5B),
             _ => None,
         }
     }
