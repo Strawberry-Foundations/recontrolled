@@ -1,4 +1,14 @@
-pub mod basic_handler;
+use crate::core::hardware::RaspberryPi;
+
+pub mod power;
 pub mod blink;
-pub mod blink_sync;
-pub mod blink_switch;
+
+pub struct LEDController {
+    pub hardware: Box<dyn RaspberryPi>,
+}
+
+impl LEDController {
+    pub fn new(model: Box<dyn RaspberryPi>) -> Self {
+        Self { hardware: model }
+    }
+}
