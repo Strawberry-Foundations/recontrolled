@@ -52,9 +52,9 @@ fn main() {
 
     match args[1].as_str() {
         // Basic Commands
-        "about" => basics::about::about(controller.hardware),
+        "about" => basics::about::about(controller.hardware.as_ref()),
         "version" | "ver" => basics::version::version(),
-        "status" => basics::status::status(controller.hardware),
+        "status" => basics::status::status(controller.hardware.as_ref()),
 
         // LED Control for Power LED
         "pwr" => match args[2].as_str() {

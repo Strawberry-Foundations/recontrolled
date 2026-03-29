@@ -2,7 +2,7 @@ use crate::constants::colors::{BOLD, YELLOW, C_RESET, WHITE, RED, UNDERLINE, LIG
 use crate::constants::RECONTROLLED_STR;
 use crate::core::hardware::RaspberryPi;
 
-pub fn about(model: Box<dyn RaspberryPi>) {
+pub fn about(model: &dyn RaspberryPi) {
     println!(
         "           {RECONTROLLED_STR}
 * ------------------------------ *
